@@ -1,12 +1,7 @@
-const {
-  createMess,
-  getUserListMess,
-  getUserListMessfren,
-} = require("./messeger.controller");
+const { createMess, getListFriend } = require("./messeger.controller");
 const router = require("express").Router();
 
 router.post("/", createMess);
-router.get("/:id", getUserListMess);
-router.get("/list/:id", getUserListMessfren);
+router.get("/:id", getListFriend);
 
 module.exports = router;

@@ -35,7 +35,7 @@ module.exports = {
   },
   getUserByUserId: (id, callBack) => {
     pool.query(
-      `select id,username,email,number, urlimage, is_active from registration where id = ?`,
+      `select id_registion,username,email,number, urlimage, is_active from registration where id_registion = ?`,
       [id],
       (error, results, fields) => {
         if (error) {
@@ -47,7 +47,7 @@ module.exports = {
   },
   getUsers: (callBack) => {
     pool.query(
-      `select id,username,email,number, urlimage, is_active from registration`,
+      `select id_registion,username,email,number, urlimage, is_active from registration`,
       [],
       (error, results, fields) => {
         if (error) {
@@ -59,7 +59,7 @@ module.exports = {
   },
   updateUser: (data, callBack) => {
     pool.query(
-      `update registration set username=?, email=?, password=?, urlimage=?, number=? where id = ?`,
+      `update registration set username=?, email=?, password=?, urlimage=?, number=? where id_registion = ?`,
       [
         data.username,
         data.email,
@@ -78,7 +78,7 @@ module.exports = {
   },
   deleteUser: (data, callBack) => {
     pool.query(
-      `delete from registration where id = ?`,
+      `delete from registration where id_registion = ?`,
       [data.id],
       (error, results, fields) => {
         if (error) {
@@ -90,7 +90,7 @@ module.exports = {
   },
   updateImage: (data, callBack) => {
     pool.query(
-      `update registration set urlimage=? where id = ?`,
+      `update registration set urlimage=? where id_registion = ?`,
       [data.urlimage, data.id],
       (error, results, fields) => {
         if (error) {

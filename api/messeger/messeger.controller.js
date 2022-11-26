@@ -1,8 +1,4 @@
-const {
-  create,
-  getUserListMess,
-  getUserListMessfren,
-} = require("./messeger.service");
+const { create, getListFriend } = require("./messeger.service");
 const { genSaltSync, hashSync, compareSync } = require("bcrypt");
 // const { sign } = require("jsonwebtoken");
 
@@ -25,9 +21,9 @@ module.exports = {
         });
     });
   },
-  getUserListMess: (req, res) => {
+  getListFriend: (req, res) => {
     const id = req.params.id;
-    getUserListMess(id, (err, results) => {
+    getListFriend(id, (err, results) => {
       if (err) {
         console.log(err);
         return;
@@ -45,24 +41,24 @@ module.exports = {
       });
     });
   },
-  getUserListMessfren: (req, res) => {
-    const id = req.params.id;
-    getUserListMessfren(id, (err, results) => {
-      if (err) {
-        console.log(err);
-        return;
-      }
-      if (!results) {
-        return res.json({
-          success: 0,
-          message: "Record not Found",
-        });
-      }
-      results.password = undefined;
-      return res.json({
-        success: 1,
-        data: results,
-      });
-    });
-  },
+  // getUserListMessfren: (req, res) => {
+  //   const id = req.params.id;
+  //   getUserListMessfren(id, (err, results) => {
+  //     if (err) {
+  //       console.log(err);
+  //       return;
+  //     }
+  //     if (!results) {
+  //       return res.json({
+  //         success: 0,
+  //         message: "Record not Found",
+  //       });
+  //     }
+  //     results.password = undefined;
+  //     return res.json({
+  //       success: 1,
+  //       data: results,
+  //     });
+  //   });
+  // },
 };
